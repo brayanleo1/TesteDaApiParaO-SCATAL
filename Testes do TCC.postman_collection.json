@@ -1,0 +1,4135 @@
+{
+	"info": {
+		"_postman_id": "ac58d1b8-ce11-4c85-9cd6-cbe95bb70fbe",
+		"name": "Testes do TCC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Aluno",
+			"item": [
+				{
+					"name": "GET Alunos - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ec80bde-f94d-4c20-86bd-8a8810203379",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Alunos - Sucesso (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa89f8a7-b258-482c-a936-e76c7247ba86",
+								"exec": [
+									"pm.test(\"Existem alunos cadastrados - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody); ",
+									"postman.setEnvironmentVariable(\"nomeZero\", jsonData.content[0].nome);",
+									"postman.setEnvironmentVariable(\"nomeUm\", jsonData.content[1].nome);",
+									"",
+									"pm.test(\"Nome de acordo com o esperado - Maria\", function() {",
+									"pm.expect(pm.environment.get(\"nomeZero\")).to.eql(\"Maria Clara Fernandes de Alencar Silva\");",
+									"});",
+									"",
+									"pm.test(\"Nome de acordo com o esperado - Guilherme\", function() {",
+									"pm.expect(pm.environment.get(\"nomeUm\")).to.eql(\"Guilherme Lopes Leite\");",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno?sort=registro,asc&page=1&size=5",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "registro,asc"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno Por Id - Sucesso (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e92c16e6-d3fc-40f4-afc3-3ff12d9e9daf",
+								"exec": [
+									"pm.test(\"Aluno encontrado - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody); ",
+									"postman.setEnvironmentVariable(\"nome\", jsonData.nome);",
+									"postman.setEnvironmentVariable(\"matricula\", jsonData.matricula);",
+									"postman.setEnvironmentVariable(\"email\", jsonData.email);",
+									"postman.setEnvironmentVariable(\"curso\", jsonData.curso);",
+									"postman.setEnvironmentVariable(\"registro\", jsonData.registro);",
+									"postman.setEnvironmentVariable(\"nome_usual\", jsonData.nome_usual);",
+									"postman.setEnvironmentVariable(\"url_foto\", jsonData.url_foto);",
+									"",
+									"pm.test(\"Nome completo de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"nome\")).to.eql(\"Lucas do Nascimento Ribeiro\");",
+									"});",
+									"",
+									"pm.test(\"Matrícula de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"matricula\")).to.eql(\"20161164010023\");",
+									"});",
+									"",
+									"pm.test(\"email de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"email\")).to.eql(\"lucas.ribeiro@academico.ifrn.edu.br\");",
+									"});",
+									"",
+									"pm.test(\"Curso de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"curso\")).to.eql(\"Técnico de Nível Médio em Informática\");",
+									"});",
+									"",
+									"pm.test(\"Data de registro de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"registro\")).to.eql(\"2019-10-24T19:25:46\");",
+									"});",
+									"",
+									"pm.test(\"Nome de usuário de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"nome_usual\")).to.eql(\"Lucas Nascimento\");",
+									"});",
+									"",
+									"pm.test(\"link da foto de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"url_foto\")).to.eql(\"https://drive.google.com/uc?id=1LbgF11zNhhasRa7CXNo98KjiUNr5Wl4u&export=download\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/1",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno Por Id - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e92c16e6-d3fc-40f4-afc3-3ff12d9e9daf",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/1",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno Por Id - Não encontrado (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e92c16e6-d3fc-40f4-afc3-3ff12d9e9daf",
+								"exec": [
+									"pm.test(\"Aluno não encontrado - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/123456789",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno por matricula - Sucesso (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e33fba19-1e91-4fca-a479-5272d9ebc6f9",
+								"exec": [
+									"pm.test(\"Aluno encontrado - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody); ",
+									"postman.setEnvironmentVariable(\"nome\", jsonData.nome);",
+									"postman.setEnvironmentVariable(\"matricula\", jsonData.matricula);",
+									"postman.setEnvironmentVariable(\"email\", jsonData.email);",
+									"postman.setEnvironmentVariable(\"curso\", jsonData.curso);",
+									"postman.setEnvironmentVariable(\"registro\", jsonData.registro);",
+									"postman.setEnvironmentVariable(\"nome_usual\", jsonData.nome_usual);",
+									"postman.setEnvironmentVariable(\"url_foto\", jsonData.url_foto);",
+									"",
+									"pm.test(\"Nome completo de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"nome\")).to.eql(\"Brayan Leohandsen Leão da Silva\");",
+									"});",
+									"",
+									"pm.test(\"Matrícula de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"matricula\")).to.eql(\"20161164010007\");",
+									"});",
+									"",
+									"pm.test(\"email de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"email\")).to.eql(\"brayan.leohandsen@academico.ifrn.edu.br\");",
+									"});",
+									"",
+									"pm.test(\"Curso de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"curso\")).to.eql(\"Técnico de Nível Médio em Informática\");",
+									"});",
+									"",
+									"pm.test(\"Data de registro de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"registro\")).to.eql(\"2019-03-07T12:17:00\");",
+									"});",
+									"",
+									"pm.test(\"Nome de usuário de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"nome_usual\")).to.eql(\"Brayan\");",
+									"});",
+									"",
+									"pm.test(\"link da foto de acordo com o esperado\", function() {",
+									"pm.expect(pm.environment.get(\"url_foto\")).to.eql(\"https://suap.ifrn.edu.br//media/alunos/75x100/179630.jpg\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"matricula",
+								"20161164010007"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno por matricula - Não encontrado (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e33fba19-1e91-4fca-a479-5272d9ebc6f9",
+								"exec": [
+									"pm.test(\"Aluno não encontrado - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/matricula/201611640100078",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"matricula",
+								"201611640100078"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Aluno por matricula - Não Autorizado (204)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e33fba19-1e91-4fca-a479-5272d9ebc6f9",
+								"exec": [
+									"pm.test(\"Não autorizado - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"matricula",
+								"20161164010007"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Aluno - Duvida",
+			"item": [
+				{
+					"name": "GET Dúvida do aluno - Sem dúvidas (204)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"O aluno não tem duvida - Código 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Dúvida do aluno - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"O aluno não tem duvida - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Dúvida do aluno - Aluno Inexistente (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"O aluno não existe - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"700",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Criação da duvida (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Duvida criada com sucesso - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody); ",
+									"pm.globals.set(\"idUno\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Qual o nome do quinto?\",\n  \"titulo\": \"A mãe de maria tinha 5 filhos, Dada, Dede, Didi, Dodo e?\",\n  \"tutoria_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Criação da segunda duvida (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Duvida criada com sucesso - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"idDuo\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Qual o sentido da vida?\",\n  \"titulo\": \"Pode me responder?\",\n  \"tutoria_id\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Dúvida do aluno - Dúvida(s) encontrada(s) (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"O aluno não tem duvida - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Não autorizado - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Hmmmmm?\",\n  \"titulo\": \"Que tipo de perguntas eu posso fazer aqui?\",\n  \"tutoria_id\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Dados inválidos (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Dados inválidos na duvida - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"\",\n  \"titulo\": \"\",\n  \"tutoria_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Aluno não encontrado (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Aluno não encontrado - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"O nome daquele livro?\",\n  \"titulo\": \"Qual era o nome daquele livro que tinha um menino que morava num planeta pequeno e tinha uma rosa que conversava com ele?\",\n  \"tutoria_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"700",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Dúvida do aluno - Tutoria não encontrada (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Tutoria não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"O meu pc travou, o que eu faço?\",\n  \"titulo\": \"Eu estava mechendo na internet pra fazer um trabalho e meu pc congelou do nada, não liga nem desliga, o que eu faço agora, o trablho é para amanhã, ajudaaaaaaaaa!!!\",\n  \"tutoria_id\": 120\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"7",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Dúvida - Resposta",
+			"item": [
+				{
+					"name": "GET Resposta da Dúvida - Sem resposta (204)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Dúvida sem resposta - Código 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Resposta da Dúvida - Dúvida não encontrada (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Dúvida não existe :( - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/99999999/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"99999999",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Resposta da Dúvida - Respondida com sucesso (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Dúvida respondida - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"resposta\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aluno_id\": 7,\n  \"descricao\": \"Como você já disse, a quinta filha é Maria, qual é o seu problema?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Resposta da Dúvida - Respondida com sucesso 2 (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Dúvida respondida - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"resposta2\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aluno_id\": 7,\n  \"descricao\": \"Eu não sei\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idDuo}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idDuo}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Resposta da Dúvida - Resposta inválida (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Resposta com dados errados - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "70879c32-7907-4394-a053-aae76f9321e5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"aluno_id\": \"a\",  \"descricao\": \"string\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Resposta da Dúvida - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aluno_id\": 7,\n  \"descricao\": \"É Maria\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Resposta da Dúvida - Não encontrado (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Não existe dúvida com esse id - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"aluno_id\": 7,\n  \"descricao\": \"MariAAAAA fácil fácil\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/999999/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"999999",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Resposta da Dúvida - Resposta(s) encontrada(s) (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Resposta(s) encontrada(s) - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Resposta da Dúvida - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c2d67e7-a8ea-4d8e-b55b-01102790ce71",
+								"exec": [
+									"pm.test(\"Resposta(s) encontrada(s) - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}/resposta",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}",
+								"resposta"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "POST Login - Sucedido (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b48aee74-7b32-46b4-a582-76fe3fae9912",
+								"exec": [
+									"pm.test(\"Logado com sucesso - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = JSON.parse(responseBody); ",
+									"pm.globals.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matricula\": \"20161164010007\",\n  \"senha\": \"Tanuzy20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/login",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Login - Erro de dados (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b48aee74-7b32-46b4-a582-76fe3fae9912",
+								"exec": [
+									"pm.test(\"Dados inválidos - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matricula\": \"20161164010007\",\n  \"senha\": \"ImGoingNow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/login",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Login - Erro de dados 2 (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b48aee74-7b32-46b4-a582-76fe3fae9912",
+								"exec": [
+									"pm.test(\"Dados inválidos - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matricula\": 20161164010007,\n  \"senha\": \"Tanuzy20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/login",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Login - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b48aee74-7b32-46b4-a582-76fe3fae9912",
+								"exec": [
+									"pm.test(\"Logado com sucesso - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"matricula\": \"20161164010007\",\n  \"senha\": \"Tanuzy20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/login",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Meus dados - Sucesso (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a6a5ce6-a1d4-4395-98b9-833a0d4626cb",
+								"exec": [
+									"pm.test(\"Dados recuperados - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"meus-dados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Meus dados - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a6a5ce6-a1d4-4395-98b9-833a0d4626cb",
+								"exec": [
+									"pm.test(\"Sem autorização para passar - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"meus-dados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Meus dados - Token inválido (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a6a5ce6-a1d4-4395-98b9-833a0d4626cb",
+								"exec": [
+									"pm.test(\"Token errado, sorry meu chapa - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"type": "text",
+								"value": "ugabuga"
+							}
+						],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"aluno",
+								"meus-dados"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tutoria",
+			"item": [
+				{
+					"name": "GET Tutoria - Tutorias encontradas (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutorias encontradas\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutoria - Sem autorização (401) Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutoria - Tutoria encontrada (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria encontrada - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutoria - Tutoria não existe (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/999999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutoria - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/2",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Tutoria - Nome atualizado (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria atualizada - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Ciência de natureza\",\r\n  \"nome_usual\": \"natureza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Tutoria - Sem autoridade (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Você não pode entrar aí - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Ciência de natureza\",\r\n  \"nome_usual\": \"natureza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Tutoria - Tutoria não existe (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Imitação Profissional\",\r\n  \"nome_usual\": \"imitação\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/999999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Tutoria - Dados errados (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria atualizada - Código 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": 2467,\r\n  \"nome_usual\": \"natureza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Tutoria - Volta ao nome original (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb005ce1-1354-45cb-ac25-4b3f53d16520",
+								"exec": [
+									"pm.test(\"Tutoria re-atualizada - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Física\",\r\n  \"nome_usual\": \"física\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tutoria - Duvida",
+			"item": [
+				{
+					"name": "GET Duvida em tutoria - Dúvida(s) encontrada(s) (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Duvida(s) encontrada(s) - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida em tutoria - Sem dúvidas (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Não há dúvidas - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/2/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"2",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida em tutoria - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida em tutoria -Tutoria inexistente (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Não existe essa tutoria - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/99999/duvida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"99999",
+								"duvida"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tutoria - Tutor",
+			"item": [
+				{
+					"name": "GET Tutor da tutoria - Tutor(es) encontrado(s) (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Tutor(es) encontrado(s) - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1",
+								"tutor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutor da tutoria - Sem tutor (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Sem tutores aqui - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/2/tutor",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"2",
+								"tutor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutor da tutoria - Não pode prosseguir (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"1",
+								"tutor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Tutor da tutoria - Tutoria não existe (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ceab669-ba45-4e1f-b0e7-984b3fc37c89",
+								"exec": [
+									"pm.test(\"Não há tutoria - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/tutoria/99999/tutor",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tutoria",
+								"99999",
+								"tutor"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "key",
+						"value": "Authorization",
+						"type": "string"
+					},
+					{
+						"key": "value",
+						"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+						"type": "string"
+					}
+				]
+			},
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Resposta",
+			"item": [
+				{
+					"name": "GET Resposta - Sucesso (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Resposta adquirida - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Resposta - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Resposta - Resposta inexistente (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Resposta não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/9999999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"9999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Resposta - Resposta atualizada (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Resposta mudada com sucesso - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Como você já disse, a quinta filha é Maria e essa pergunta é uma pegadinha, por favor, não poste mais essas coisas desnecessárias pois pode fazer com que outras perguntas mais sérias não tenham tempo o suficiente para serem respondidas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Resposta - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Erro de autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Melhor dizendo: pergunta idiota, tolerância zero\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Resposta - Resposta inexistente (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Não existe tal resposta - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Pergunta pra tua mãe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/999999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Resposta - Sucesso (401) Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Sem autorização - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta2}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta2}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Resposta - Sucesso (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Resposta deletada - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/{{resposta}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"{{resposta}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Resposta - Sucesso (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "737c712c-a763-4af1-80db-8e9a950f7f7f",
+								"exec": [
+									"pm.test(\"Resposta não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/resposta/9999999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"resposta",
+								"9999999"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Duvida",
+			"item": [
+				{
+					"name": "GET Duvida - Duvida encontrada (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Duvida encontrada - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida - Duvida não encontrada (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Duvida não encontrada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/2000",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"2000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Não autorizado - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Dúvida do aluno - Atualiza dúvida (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Duvida atualizada com sucesso - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Qual é o nosso objetivo aqui?\",\n  \"titulo\": \"A teoria da vida\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idDuo}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idDuo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Dúvida do aluno - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Sem autorização necessária - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"De onde viemos e para onde vamos?\",\n  \"titulo\": \"A teoria da vida\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idDuo}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idDuo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH Dúvida do aluno - Sem dúvida (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9e7012c9-20e4-4fa7-8df1-c01c26f90f25",
+								"exec": [
+									"pm.test(\"Não existe tal dúvida - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descricao\": \"Estou perdido, me dá uma luz?\",\n  \"titulo\": \"A teoria da vida\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/99999",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida - Duvida encontrada por pesquisa (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Duvida encontrada - Código 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/search/vida",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"search",
+								"vida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida - Duvida não encontrada por pesquisa (204)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Duvida não encontrada - Código 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/search/monte",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"search",
+								"monte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Duvida - Sem autorização (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8988a15-7b11-48c0-b924-7fd8f427e3ad",
+								"exec": [
+									"pm.test(\"Autorização insulficiente - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/search/objetivo",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"search",
+								"objetivo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Duvida - Deletar 1ª dúvida (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57da93a1-d515-4201-b6ee-2ae2aa600438",
+								"exec": [
+									"pm.test(\"1ª dúvida deletada - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Duvida - Deletar 2ª dúvida (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "004815af-6510-427d-abf3-9dff4cb685c8",
+								"exec": [
+									"pm.test(\"2ª Dúvida deletada - Código 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idDuo}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idDuo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Duvida - Não autorizado (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "004815af-6510-427d-abf3-9dff4cb685c8",
+								"exec": [
+									"pm.test(\"Não autorizado - Código 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/{{idUno}}",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"{{idUno}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Duvida - Dúvida não encontrada (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57da93a1-d515-4201-b6ee-2ae2aa600438",
+								"exec": [
+									"pm.test(\"1ª dúvida deletada - Código 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "6061913f881d4dca9a230e3e86a75a412cf26487501a9e6a25873dcfde6d5dcc",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://scatalapi.herokuapp.com/duvida/2000",
+							"protocol": "http",
+							"host": [
+								"scatalapi",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"duvida",
+								"2000"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fee0a5bb-9620-4a6e-9d86-60b72cad3341",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7075cee9-834b-4f01-83d9-0fc0e929e034",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

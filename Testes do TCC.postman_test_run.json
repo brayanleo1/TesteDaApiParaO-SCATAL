@@ -1,0 +1,4219 @@
+{
+	"id": "9d68f1ae-3f8f-45d7-b748-eeeffc6de4e5",
+	"name": "Testes do TCC",
+	"allTests": [],
+	"timestamp": "2019-11-22T22:38:25.767Z",
+	"collection_id": "ac58d1b8-ce11-4c85-9cd6-cbe95bb70fbe",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "ac58d1b8-ce11-4c85-9cd6-cbe95bb70fbe",
+		"name": "Testes do TCC",
+		"order": [],
+		"folders_order": [
+			"86acb4c4-8629-4042-bda8-15683218b160",
+			"6d3a6f7c-55ae-49dd-b725-f84680b0777a",
+			"24ab751f-4299-49d7-a67c-044b5e75f049",
+			"538634f8-02a8-43de-953f-cf0cb60fadfb",
+			"97ac09c5-2afd-44a4-a23b-51ed5fb28af6",
+			"25d09c22-a59e-45c5-88b3-42de4d159ccd",
+			"d8a09d60-3625-4390-af25-ca389ea8f560",
+			"4946867a-2282-488b-8dc5-88b65ab1b701",
+			"5bf3f548-7d3f-4e63-a67c-e9b13d7f61f5"
+		],
+		"isFavorite": true
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "token",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "resposta",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "idDuo",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "resposta2",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"results": [
+		{
+			"name": "GET Alunos - Não autorizado (401)",
+			"id": "5e064c10-7034-4870-872b-921a47c44ef6",
+			"url": "scatalapi.herokuapp.com/aluno",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"128"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "128",
+			"totalRequestTime": "128",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Alunos - Sucesso (200)",
+			"id": "6e29063f-b21f-41c7-bc84-7fe397de940d",
+			"url": "scatalapi.herokuapp.com/aluno?sort=registro,asc&page=1&size=5",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Existem alunos cadastrados - Código 200": true,
+				"Nome de acordo com o esperado - Maria": true,
+				"Nome de acordo com o esperado - Guilherme": true
+			},
+			"testPassFailCounts": {
+				"Existem alunos cadastrados - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de acordo com o esperado - Maria": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de acordo com o esperado - Guilherme": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"213"
+			],
+			"allTests": [
+				{
+					"Existem alunos cadastrados - Código 200": true,
+					"Nome de acordo com o esperado - Maria": true,
+					"Nome de acordo com o esperado - Guilherme": true
+				}
+			],
+			"time": "213",
+			"totalRequestTime": "213",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno Por Id - Sucesso (200)",
+			"id": "86887f25-6497-4f37-8da1-d170dcc4d1c8",
+			"url": "scatalapi.herokuapp.com/aluno/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Aluno encontrado - Código 200": true,
+				"Nome completo de acordo com o esperado": true,
+				"Matrícula de acordo com o esperado": true,
+				"email de acordo com o esperado": true,
+				"Curso de acordo com o esperado": true,
+				"Data de registro de acordo com o esperado": true,
+				"Nome de usuário de acordo com o esperado": true,
+				"link da foto de acordo com o esperado": true
+			},
+			"testPassFailCounts": {
+				"Aluno encontrado - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome completo de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Matrícula de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Curso de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data de registro de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de usuário de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"link da foto de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"133"
+			],
+			"allTests": [
+				{
+					"Aluno encontrado - Código 200": true,
+					"Nome completo de acordo com o esperado": true,
+					"Matrícula de acordo com o esperado": true,
+					"email de acordo com o esperado": true,
+					"Curso de acordo com o esperado": true,
+					"Data de registro de acordo com o esperado": true,
+					"Nome de usuário de acordo com o esperado": true,
+					"link da foto de acordo com o esperado": true
+				}
+			],
+			"time": "133",
+			"totalRequestTime": "133",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno Por Id - Não autorizado (401)",
+			"id": "e1f660a5-3de2-4718-9be3-0a0b98a9461f",
+			"url": "scatalapi.herokuapp.com/aluno/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"125"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "125",
+			"totalRequestTime": "125",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno Por Id - Não encontrado (404)",
+			"id": "69acd35b-64a9-401f-9722-5280323cd465",
+			"url": "scatalapi.herokuapp.com/aluno/123456789",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Aluno não encontrado - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"132"
+			],
+			"allTests": [
+				{
+					"Aluno não encontrado - Código 404": true
+				}
+			],
+			"time": "132",
+			"totalRequestTime": "132",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno por matricula - Sucesso (200)",
+			"id": "711e5667-7ee1-4803-9fe3-bb046b45f66f",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Aluno encontrado - Código 200": true,
+				"Nome completo de acordo com o esperado": true,
+				"Matrícula de acordo com o esperado": true,
+				"email de acordo com o esperado": true,
+				"Curso de acordo com o esperado": true,
+				"Data de registro de acordo com o esperado": true,
+				"Nome de usuário de acordo com o esperado": true,
+				"link da foto de acordo com o esperado": true
+			},
+			"testPassFailCounts": {
+				"Aluno encontrado - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome completo de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Matrícula de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Curso de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data de registro de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de usuário de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"link da foto de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"132"
+			],
+			"allTests": [
+				{
+					"Aluno encontrado - Código 200": true,
+					"Nome completo de acordo com o esperado": true,
+					"Matrícula de acordo com o esperado": true,
+					"email de acordo com o esperado": true,
+					"Curso de acordo com o esperado": true,
+					"Data de registro de acordo com o esperado": true,
+					"Nome de usuário de acordo com o esperado": true,
+					"link da foto de acordo com o esperado": true
+				}
+			],
+			"time": "132",
+			"totalRequestTime": "132",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno por matricula - Não encontrado (404)",
+			"id": "38c70d2f-90e0-4b0e-b314-cd4ff8d7e0d2",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/201611640100078",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Aluno não encontrado - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"134"
+			],
+			"allTests": [
+				{
+					"Aluno não encontrado - Código 404": true
+				}
+			],
+			"time": "134",
+			"totalRequestTime": "134",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Aluno por matricula - Não Autorizado (204)",
+			"id": "e94c6baf-ccfb-4448-8ad4-2cca117f6680",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Não autorizado - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"119"
+			],
+			"allTests": [
+				{
+					"Não autorizado - Código 401": true
+				}
+			],
+			"time": "119",
+			"totalRequestTime": "119",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Dúvida do aluno - Sem dúvidas (204)",
+			"id": "969d1cad-b42b-4d7a-a6b5-2e6b4969c791",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"O aluno não tem duvida - Código 204": true
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"164"
+			],
+			"allTests": [
+				{
+					"O aluno não tem duvida - Código 204": true
+				}
+			],
+			"time": "164",
+			"totalRequestTime": "164",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Dúvida do aluno - Não autorizado (401)",
+			"id": "c261745f-dc4a-4208-aa30-c0d82a759e1c",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"O aluno não tem duvida - Código 401": true
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"121"
+			],
+			"allTests": [
+				{
+					"O aluno não tem duvida - Código 401": true
+				}
+			],
+			"time": "121",
+			"totalRequestTime": "121",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Dúvida do aluno - Aluno Inexistente (404)",
+			"id": "e91fb6a0-d4c2-4377-a50c-488f432acbf6",
+			"url": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"O aluno não existe - Código 404": true
+			},
+			"testPassFailCounts": {
+				"O aluno não existe - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"129"
+			],
+			"allTests": [
+				{
+					"O aluno não existe - Código 404": true
+				}
+			],
+			"time": "129",
+			"totalRequestTime": "129",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Criação da duvida (201)",
+			"id": "86a734ac-18f9-435f-9f57-e4207492a6a5",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Duvida criada com sucesso - Código 201": true
+			},
+			"testPassFailCounts": {
+				"Duvida criada com sucesso - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"148"
+			],
+			"allTests": [
+				{
+					"Duvida criada com sucesso - Código 201": true
+				}
+			],
+			"time": "148",
+			"totalRequestTime": "148",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Criação da segunda duvida (201)",
+			"id": "bd010aed-53df-4993-af91-b5e93edd8ce3",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Duvida criada com sucesso - Código 201": true
+			},
+			"testPassFailCounts": {
+				"Duvida criada com sucesso - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"135"
+			],
+			"allTests": [
+				{
+					"Duvida criada com sucesso - Código 201": true
+				}
+			],
+			"time": "135",
+			"totalRequestTime": "135",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Dúvida do aluno - Dúvida(s) encontrada(s) (200)",
+			"id": "e3a8cb6f-9a4d-45c6-8e69-f2811c79b43a",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"O aluno não tem duvida - Código 200": true
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"151"
+			],
+			"allTests": [
+				{
+					"O aluno não tem duvida - Código 200": true
+				}
+			],
+			"time": "151",
+			"totalRequestTime": "151",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Não autorizado (401)",
+			"id": "d9b859fd-4f7b-4ea0-a305-bf694cece05a",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Não autorizado - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Não autorizado - Código 401": true
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Dados inválidos (400)",
+			"id": "c460e3bc-5c63-47e1-a7cc-e2da2d1685de",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"tests": {
+				"Dados inválidos na duvida - Código 400": true
+			},
+			"testPassFailCounts": {
+				"Dados inválidos na duvida - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"138"
+			],
+			"allTests": [
+				{
+					"Dados inválidos na duvida - Código 400": true
+				}
+			],
+			"time": "138",
+			"totalRequestTime": "138",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Aluno não encontrado (404)",
+			"id": "2522b82c-6bea-47a7-a2b8-cffc43da4f7e",
+			"url": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Aluno não encontrado - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"135"
+			],
+			"allTests": [
+				{
+					"Aluno não encontrado - Código 404": true
+				}
+			],
+			"time": "135",
+			"totalRequestTime": "135",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Dúvida do aluno - Tutoria não encontrada (404)",
+			"id": "71848515-216f-49df-980c-1dcbfe93146e",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Tutoria não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"135"
+			],
+			"allTests": [
+				{
+					"Tutoria não encontrada - Código 404": true
+				}
+			],
+			"time": "135",
+			"totalRequestTime": "135",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Sem resposta (204)",
+			"id": "135a21d2-93a3-4b13-b3ed-2ee49f841804",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"Dúvida sem resposta - Código 204": true
+			},
+			"testPassFailCounts": {
+				"Dúvida sem resposta - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"139"
+			],
+			"allTests": [
+				{
+					"Dúvida sem resposta - Código 204": true
+				}
+			],
+			"time": "139",
+			"totalRequestTime": "139",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Dúvida não encontrada (404)",
+			"id": "b831df9c-20b9-4946-b9a9-b7e7dd40ebdd",
+			"url": "http://scatalapi.herokuapp.com/duvida/99999999/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Dúvida não existe :( - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Dúvida não existe :( - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"157"
+			],
+			"allTests": [
+				{
+					"Dúvida não existe :( - Código 404": true
+				}
+			],
+			"time": "157",
+			"totalRequestTime": "157",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Respondida com sucesso (201)",
+			"id": "ab704d88-3c00-4dc0-a330-1c467febc152",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Dúvida respondida - Código 201": true
+			},
+			"testPassFailCounts": {
+				"Dúvida respondida - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"143"
+			],
+			"allTests": [
+				{
+					"Dúvida respondida - Código 201": true
+				}
+			],
+			"time": "143",
+			"totalRequestTime": "143",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Respondida com sucesso 2 (201)",
+			"id": "002f8918-1bb0-41a2-bb90-3a5dfcee3eae",
+			"url": "http://scatalapi.herokuapp.com/duvida/16/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Dúvida respondida - Código 201": true
+			},
+			"testPassFailCounts": {
+				"Dúvida respondida - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"140"
+			],
+			"allTests": [
+				{
+					"Dúvida respondida - Código 201": true
+				}
+			],
+			"time": "140",
+			"totalRequestTime": "140",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Resposta inválida (400)",
+			"id": "6a551442-72cf-4ffd-84c6-ef3e81a13e9e",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"tests": {
+				"Resposta com dados errados - Código 400": true
+			},
+			"testPassFailCounts": {
+				"Resposta com dados errados - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"142"
+			],
+			"allTests": [
+				{
+					"Resposta com dados errados - Código 400": true
+				}
+			],
+			"time": "142",
+			"totalRequestTime": "142",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Não autorizado (401)",
+			"id": "3a26e1bc-cebb-42f4-8087-e1d15b992947",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"116"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "116",
+			"totalRequestTime": "116",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Não encontrado (404)",
+			"id": "765aadfd-cd8d-484a-981c-f20fa6793ecc",
+			"url": "http://scatalapi.herokuapp.com/duvida/999999/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Não existe dúvida com esse id - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Não existe dúvida com esse id - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"128"
+			],
+			"allTests": [
+				{
+					"Não existe dúvida com esse id - Código 404": true
+				}
+			],
+			"time": "128",
+			"totalRequestTime": "128",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Resposta(s) encontrada(s) (200)",
+			"id": "a1e26959-17b9-46e0-adca-66985dc438f6",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Resposta(s) encontrada(s) - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Resposta(s) encontrada(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"134"
+			],
+			"allTests": [
+				{
+					"Resposta(s) encontrada(s) - Código 200": true
+				}
+			],
+			"time": "134",
+			"totalRequestTime": "134",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Não autorizado (401)",
+			"id": "c1cd6d41-bca5-4fc3-b4a3-494c5320e90a",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Resposta(s) encontrada(s) - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Resposta(s) encontrada(s) - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"129"
+			],
+			"allTests": [
+				{
+					"Resposta(s) encontrada(s) - Código 401": true
+				}
+			],
+			"time": "129",
+			"totalRequestTime": "129",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Login - Sucedido (200)",
+			"id": "32aa8e5d-267c-412a-8adb-cd839a31b353",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Logado com sucesso - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Logado com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"2048"
+			],
+			"allTests": [
+				{
+					"Logado com sucesso - Código 200": true
+				}
+			],
+			"time": "2048",
+			"totalRequestTime": "2048",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Login - Erro de dados (400)",
+			"id": "ccb6cf78-a7df-4d9a-b007-1bee368ddadd",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"tests": {
+				"Dados inválidos - Código 400": true
+			},
+			"testPassFailCounts": {
+				"Dados inválidos - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"812"
+			],
+			"allTests": [
+				{
+					"Dados inválidos - Código 400": true
+				}
+			],
+			"time": "812",
+			"totalRequestTime": "812",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Login - Erro de dados 2 (400)",
+			"id": "765b8642-a23b-4e1b-a1bb-0a94b03e1bec",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Dados inválidos - Código 400": false
+			},
+			"testPassFailCounts": {
+				"Dados inválidos - Código 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Dados inválidos - Código 400": false
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "POST Login - Não autorizado (401)",
+			"id": "b985e824-7b20-438b-a2fb-d014bb8e95ec",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Logado com sucesso - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Logado com sucesso - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"153"
+			],
+			"allTests": [
+				{
+					"Logado com sucesso - Código 401": true
+				}
+			],
+			"time": "153",
+			"totalRequestTime": "153",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Meus dados - Sucesso (200)",
+			"id": "1ef8c00b-de7b-4c1b-a01a-a2cc27c2590d",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Dados recuperados - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Dados recuperados - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"979"
+			],
+			"allTests": [
+				{
+					"Dados recuperados - Código 200": true
+				}
+			],
+			"time": "979",
+			"totalRequestTime": "979",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Meus dados - Sem autorização (401)",
+			"id": "a315a9fa-edff-41cf-b107-e641b8cffbac",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização para passar - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização para passar - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"119"
+			],
+			"allTests": [
+				{
+					"Sem autorização para passar - Código 401": true
+				}
+			],
+			"time": "119",
+			"totalRequestTime": "119",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Meus dados - Token inválido (400)",
+			"id": "45ac75a9-e5c5-4c77-904c-4d76250addcb",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"tests": {
+				"Token errado, sorry meu chapa - Código 400": true
+			},
+			"testPassFailCounts": {
+				"Token errado, sorry meu chapa - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"682"
+			],
+			"allTests": [
+				{
+					"Token errado, sorry meu chapa - Código 400": true
+				}
+			],
+			"time": "682",
+			"totalRequestTime": "682",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutoria - Tutorias encontradas (200)",
+			"id": "bda5297f-e6e9-43e4-8dc8-96da0dec4040",
+			"url": "http://scatalapi.herokuapp.com/tutoria",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutorias encontradas": true
+			},
+			"testPassFailCounts": {
+				"Tutorias encontradas": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"186"
+			],
+			"allTests": [
+				{
+					"Tutorias encontradas": true
+				}
+			],
+			"time": "186",
+			"totalRequestTime": "186",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutoria - Sem autorização (401) Copy",
+			"id": "08c9dfd2-ec16-439b-9e1c-1c6327dc4f05",
+			"url": "http://scatalapi.herokuapp.com/tutoria",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"119"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "119",
+			"totalRequestTime": "119",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutoria - Tutoria encontrada (200)",
+			"id": "d11b7028-672d-4938-8da8-2c48e184b2a3",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutoria encontrada - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Tutoria encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"119"
+			],
+			"allTests": [
+				{
+					"Tutoria encontrada - Código 200": true
+				}
+			],
+			"time": "119",
+			"totalRequestTime": "119",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutoria - Tutoria não existe (404)",
+			"id": "def89c54-0c1d-4c60-a11e-f2871b31a9d6",
+			"url": "http://scatalapi.herokuapp.com/tutoria/999999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Tutoria não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"152"
+			],
+			"allTests": [
+				{
+					"Tutoria não encontrada - Código 404": true
+				}
+			],
+			"time": "152",
+			"totalRequestTime": "152",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutoria - Sem autorização (401)",
+			"id": "67207872-deec-4dc9-a1f2-0a38720d961d",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"122"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "122",
+			"totalRequestTime": "122",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Tutoria - Nome atualizado (200)",
+			"id": "6d59aa73-8c61-4a78-b2e5-7a95b670bf8f",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutoria atualizada - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Tutoria atualizada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"141"
+			],
+			"allTests": [
+				{
+					"Tutoria atualizada - Código 200": true
+				}
+			],
+			"time": "141",
+			"totalRequestTime": "141",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Tutoria - Sem autoridade (401)",
+			"id": "e430a8a3-7f12-41aa-9fa3-0c29d6e5be9d",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Você não pode entrar aí - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Você não pode entrar aí - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"129"
+			],
+			"allTests": [
+				{
+					"Você não pode entrar aí - Código 401": true
+				}
+			],
+			"time": "129",
+			"totalRequestTime": "129",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Tutoria - Tutoria não existe (404)",
+			"id": "0501acc2-3f6a-4b5b-99b0-00ba1cbbcda7",
+			"url": "http://scatalapi.herokuapp.com/tutoria/999999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Tutoria não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"124"
+			],
+			"allTests": [
+				{
+					"Tutoria não encontrada - Código 404": true
+				}
+			],
+			"time": "124",
+			"totalRequestTime": "124",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Tutoria - Dados errados (400)",
+			"id": "536eec41-5805-41f3-81e1-6fb38f63d8dd",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutoria atualizada - Código 400": false
+			},
+			"testPassFailCounts": {
+				"Tutoria atualizada - Código 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"139"
+			],
+			"allTests": [
+				{
+					"Tutoria atualizada - Código 400": false
+				}
+			],
+			"time": "139",
+			"totalRequestTime": "139",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Tutoria - Volta ao nome original (200)",
+			"id": "feef3d75-0c0c-4570-b01a-d3955bc7935a",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutoria re-atualizada - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Tutoria re-atualizada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"151"
+			],
+			"allTests": [
+				{
+					"Tutoria re-atualizada - Código 200": true
+				}
+			],
+			"time": "151",
+			"totalRequestTime": "151",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida em tutoria - Dúvida(s) encontrada(s) (200)",
+			"id": "54fcea13-d43b-4f70-83b1-5495bbd34fba",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Duvida(s) encontrada(s) - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Duvida(s) encontrada(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"134"
+			],
+			"allTests": [
+				{
+					"Duvida(s) encontrada(s) - Código 200": true
+				}
+			],
+			"time": "134",
+			"totalRequestTime": "134",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida em tutoria - Sem dúvidas (201)",
+			"id": "fd42c491-55f6-4642-9de2-2f44fccfe447",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"Não há dúvidas - Código 201": false
+			},
+			"testPassFailCounts": {
+				"Não há dúvidas - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"127"
+			],
+			"allTests": [
+				{
+					"Não há dúvidas - Código 201": false
+				}
+			],
+			"time": "127",
+			"totalRequestTime": "127",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida em tutoria - Sem autorização (401)",
+			"id": "f37c4fed-6c8c-42cd-b178-d39f2cae216b",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"117"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "117",
+			"totalRequestTime": "117",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida em tutoria -Tutoria inexistente (404)",
+			"id": "568a599e-d38b-4056-8b3b-abbfebc68afe",
+			"url": "http://scatalapi.herokuapp.com/tutoria/99999/duvida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Não existe essa tutoria - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Não existe essa tutoria - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Não existe essa tutoria - Código 404": true
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutor da tutoria - Tutor(es) encontrado(s) (200)",
+			"id": "66fd38b9-40b0-4b8a-9dc7-be8c97605da1",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Tutor(es) encontrado(s) - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Tutor(es) encontrado(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"118"
+			],
+			"allTests": [
+				{
+					"Tutor(es) encontrado(s) - Código 200": true
+				}
+			],
+			"time": "118",
+			"totalRequestTime": "118",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutor da tutoria - Sem tutor (201)",
+			"id": "b38726a7-6f33-4f2b-9828-9c0842ef18dd",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2/tutor",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"Sem tutores aqui - Código 201": false
+			},
+			"testPassFailCounts": {
+				"Sem tutores aqui - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"117"
+			],
+			"allTests": [
+				{
+					"Sem tutores aqui - Código 201": false
+				}
+			],
+			"time": "117",
+			"totalRequestTime": "117",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutor da tutoria - Não pode prosseguir (401)",
+			"id": "5cb77e4e-91f3-40ad-aa93-40d3702b7e1e",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"117"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "117",
+			"totalRequestTime": "117",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Tutor da tutoria - Tutoria não existe (404)",
+			"id": "c5fe3b67-fe33-4310-9988-d2aa3f6e17b4",
+			"url": "http://scatalapi.herokuapp.com/tutoria/99999/tutor",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Não há tutoria - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Não há tutoria - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"130"
+			],
+			"allTests": [
+				{
+					"Não há tutoria - Código 404": true
+				}
+			],
+			"time": "130",
+			"totalRequestTime": "130",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta - Sucesso (200)",
+			"id": "4055eec9-e2e3-42aa-8853-1218436bf815",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Resposta adquirida - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Resposta adquirida - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"130"
+			],
+			"allTests": [
+				{
+					"Resposta adquirida - Código 200": true
+				}
+			],
+			"time": "130",
+			"totalRequestTime": "130",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta - Não autorizado (401)",
+			"id": "4e0bad65-dffe-486f-b47f-2384bda48f2f",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"122"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "122",
+			"totalRequestTime": "122",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Resposta - Resposta inexistente (404)",
+			"id": "8fd56c01-2e2b-4d2f-8153-2d91b415e9d7",
+			"url": "http://scatalapi.herokuapp.com/resposta/9999999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Resposta não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Resposta não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Resposta não encontrada - Código 404": true
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Resposta - Resposta atualizada (200)",
+			"id": "05eadfde-788b-48e4-9561-b5aa77e94685",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Resposta mudada com sucesso - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Resposta mudada com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"149"
+			],
+			"allTests": [
+				{
+					"Resposta mudada com sucesso - Código 200": true
+				}
+			],
+			"time": "149",
+			"totalRequestTime": "149",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Resposta - Sem autorização (401)",
+			"id": "7a2aef93-b6a3-4190-a01c-0615e1f481b5",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Erro de autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Erro de autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"118"
+			],
+			"allTests": [
+				{
+					"Erro de autorização - Código 401": true
+				}
+			],
+			"time": "118",
+			"totalRequestTime": "118",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Resposta - Resposta inexistente (404)",
+			"id": "a981458f-5110-44d9-bb79-703e568d1d87",
+			"url": "http://scatalapi.herokuapp.com/resposta/999999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Não existe tal resposta - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Não existe tal resposta - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"123"
+			],
+			"allTests": [
+				{
+					"Não existe tal resposta - Código 404": true
+				}
+			],
+			"time": "123",
+			"totalRequestTime": "123",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (401) Copy",
+			"id": "32ee3515-6a6b-4ac6-a383-50f9b5bc0a2f",
+			"url": "http://scatalapi.herokuapp.com/resposta/18",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"117"
+			],
+			"allTests": [
+				{
+					"Sem autorização - Código 401": true
+				}
+			],
+			"time": "117",
+			"totalRequestTime": "117",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (201)",
+			"id": "8449e26d-4aa9-41cc-8c80-9c2d1afb2f5d",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"Resposta deletada - Código 201": false
+			},
+			"testPassFailCounts": {
+				"Resposta deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"144"
+			],
+			"allTests": [
+				{
+					"Resposta deletada - Código 201": false
+				}
+			],
+			"time": "144",
+			"totalRequestTime": "144",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (404)",
+			"id": "055f0532-b81b-41a1-81ff-4cd9a2fd29ca",
+			"url": "http://scatalapi.herokuapp.com/resposta/9999999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Resposta não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Resposta não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Resposta não encontrada - Código 404": true
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Duvida encontrada (200)",
+			"id": "aa61f1b7-ac79-42d2-acd3-d28cf9d42d06",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Duvida encontrada - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Duvida encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"131"
+			],
+			"allTests": [
+				{
+					"Duvida encontrada - Código 200": true
+				}
+			],
+			"time": "131",
+			"totalRequestTime": "131",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Duvida não encontrada (404)",
+			"id": "eadfebea-474d-4627-a2c7-d013ad00e1a9",
+			"url": "http://scatalapi.herokuapp.com/duvida/2000",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Duvida não encontrada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Duvida não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"125"
+			],
+			"allTests": [
+				{
+					"Duvida não encontrada - Código 404": true
+				}
+			],
+			"time": "125",
+			"totalRequestTime": "125",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Não autorizado (401)",
+			"id": "13bfd9a2-5d88-4329-9af6-202f7a85dfc8",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Não autorizado - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"120"
+			],
+			"allTests": [
+				{
+					"Não autorizado - Código 401": true
+				}
+			],
+			"time": "120",
+			"totalRequestTime": "120",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Atualiza dúvida (200)",
+			"id": "13cf95d8-446d-478e-b490-13b102da5173",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Duvida atualizada com sucesso - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Duvida atualizada com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"140"
+			],
+			"allTests": [
+				{
+					"Duvida atualizada com sucesso - Código 200": true
+				}
+			],
+			"time": "140",
+			"totalRequestTime": "140",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Sem autorização (401)",
+			"id": "3eec8f90-5a4d-4c7f-9982-46d3fcc987c4",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Sem autorização necessária - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Sem autorização necessária - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"118"
+			],
+			"allTests": [
+				{
+					"Sem autorização necessária - Código 401": true
+				}
+			],
+			"time": "118",
+			"totalRequestTime": "118",
+			"iterationResults": {}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Sem dúvida (404)",
+			"id": "e1037659-23b6-4959-8cc6-411ae949aa59",
+			"url": "http://scatalapi.herokuapp.com/duvida/99999",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"Não existe tal dúvida - Código 404": true
+			},
+			"testPassFailCounts": {
+				"Não existe tal dúvida - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"132"
+			],
+			"allTests": [
+				{
+					"Não existe tal dúvida - Código 404": true
+				}
+			],
+			"time": "132",
+			"totalRequestTime": "132",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Duvida encontrada por pesquisa (200)",
+			"id": "1e6fb23d-c1ad-4bcc-a366-e8a9d558cf2a",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/vida",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Duvida encontrada - Código 200": true
+			},
+			"testPassFailCounts": {
+				"Duvida encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"126"
+			],
+			"allTests": [
+				{
+					"Duvida encontrada - Código 200": true
+				}
+			],
+			"time": "126",
+			"totalRequestTime": "126",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Duvida não encontrada por pesquisa (204)",
+			"id": "e6ace9e6-fe50-4949-88f7-867cb42715ae",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/monte",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"Duvida não encontrada - Código 204": true
+			},
+			"testPassFailCounts": {
+				"Duvida não encontrada - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"120"
+			],
+			"allTests": [
+				{
+					"Duvida não encontrada - Código 204": true
+				}
+			],
+			"time": "120",
+			"totalRequestTime": "120",
+			"iterationResults": {}
+		},
+		{
+			"name": "GET Duvida - Sem autorização (401)",
+			"id": "71b2d7af-9cdc-4b0d-b304-5da5d5a200a6",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/objetivo",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Autorização insulficiente - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Autorização insulficiente - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"141"
+			],
+			"allTests": [
+				{
+					"Autorização insulficiente - Código 401": true
+				}
+			],
+			"time": "141",
+			"totalRequestTime": "141",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Duvida - Deletar 1ª dúvida (201)",
+			"id": "faee8d79-b456-4208-8723-dafb2902eb2f",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"1ª dúvida deletada - Código 201": false
+			},
+			"testPassFailCounts": {
+				"1ª dúvida deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"135"
+			],
+			"allTests": [
+				{
+					"1ª dúvida deletada - Código 201": false
+				}
+			],
+			"time": "135",
+			"totalRequestTime": "135",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Duvida - Deletar 2ª dúvida (201)",
+			"id": "a467ce5e-cc29-40c3-bdf9-8e6ce53c03e2",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"tests": {
+				"2ª Dúvida deletada - Código 201": false
+			},
+			"testPassFailCounts": {
+				"2ª Dúvida deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				"133"
+			],
+			"allTests": [
+				{
+					"2ª Dúvida deletada - Código 201": false
+				}
+			],
+			"time": "133",
+			"totalRequestTime": "133",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Duvida - Não autorizado (401)",
+			"id": "db4a8796-1266-410e-9edf-d1c670d8cc04",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"tests": {
+				"Não autorizado - Código 401": true
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"118"
+			],
+			"allTests": [
+				{
+					"Não autorizado - Código 401": true
+				}
+			],
+			"time": "118",
+			"totalRequestTime": "118",
+			"iterationResults": {}
+		},
+		{
+			"name": "DELETE Duvida - Dúvida não encontrada (404)",
+			"id": "4c2dbdd4-0bcb-4af5-a170-ebc3734facab",
+			"url": "http://scatalapi.herokuapp.com/duvida/2000",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"tests": {
+				"1ª dúvida deletada - Código 404": true
+			},
+			"testPassFailCounts": {
+				"1ª dúvida deletada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"124"
+			],
+			"allTests": [
+				{
+					"1ª dúvida deletada - Código 404": true
+				}
+			],
+			"time": "124",
+			"totalRequestTime": "124",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 83,
+	"totalFail": 7,
+	"totalTime": 13831,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "GET Alunos - Não autorizado (401)",
+			"id": "5e064c10-7034-4870-872b-921a47c44ef6",
+			"url": "scatalapi.herokuapp.com/aluno",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Alunos - Sucesso (200)",
+			"id": "6e29063f-b21f-41c7-bc84-7fe397de940d",
+			"url": "scatalapi.herokuapp.com/aluno?sort=registro,asc&page=1&size=5",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Existem alunos cadastrados - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de acordo com o esperado - Maria": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de acordo com o esperado - Guilherme": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno Por Id - Sucesso (200)",
+			"id": "86887f25-6497-4f37-8da1-d170dcc4d1c8",
+			"url": "scatalapi.herokuapp.com/aluno/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Aluno encontrado - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome completo de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Matrícula de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Curso de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data de registro de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de usuário de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"link da foto de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno Por Id - Não autorizado (401)",
+			"id": "e1f660a5-3de2-4718-9be3-0a0b98a9461f",
+			"url": "scatalapi.herokuapp.com/aluno/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno Por Id - Não encontrado (404)",
+			"id": "69acd35b-64a9-401f-9722-5280323cd465",
+			"url": "scatalapi.herokuapp.com/aluno/123456789",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno por matricula - Sucesso (200)",
+			"id": "711e5667-7ee1-4803-9fe3-bb046b45f66f",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Aluno encontrado - Código 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome completo de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Matrícula de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Curso de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data de registro de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome de usuário de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"link da foto de acordo com o esperado": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno por matricula - Não encontrado (404)",
+			"id": "38c70d2f-90e0-4b0e-b314-cd4ff8d7e0d2",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/201611640100078",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Aluno por matricula - Não Autorizado (204)",
+			"id": "e94c6baf-ccfb-4448-8ad4-2cca117f6680",
+			"url": "scatalapi.herokuapp.com/aluno/matricula/20161164010007",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Dúvida do aluno - Sem dúvidas (204)",
+			"id": "969d1cad-b42b-4d7a-a6b5-2e6b4969c791",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Dúvida do aluno - Não autorizado (401)",
+			"id": "c261745f-dc4a-4208-aa30-c0d82a759e1c",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Dúvida do aluno - Aluno Inexistente (404)",
+			"id": "e91fb6a0-d4c2-4377-a50c-488f432acbf6",
+			"url": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"O aluno não existe - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Criação da duvida (201)",
+			"id": "86a734ac-18f9-435f-9f57-e4207492a6a5",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida criada com sucesso - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Criação da segunda duvida (201)",
+			"id": "bd010aed-53df-4993-af91-b5e93edd8ce3",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida criada com sucesso - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Dúvida do aluno - Dúvida(s) encontrada(s) (200)",
+			"id": "e3a8cb6f-9a4d-45c6-8e69-f2811c79b43a",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"O aluno não tem duvida - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Não autorizado (401)",
+			"id": "d9b859fd-4f7b-4ea0-a305-bf694cece05a",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Dados inválidos (400)",
+			"id": "c460e3bc-5c63-47e1-a7cc-e2da2d1685de",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {
+				"Dados inválidos na duvida - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Aluno não encontrado (404)",
+			"id": "2522b82c-6bea-47a7-a2b8-cffc43da4f7e",
+			"url": "http://scatalapi.herokuapp.com/aluno/700/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Aluno não encontrado - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Dúvida do aluno - Tutoria não encontrada (404)",
+			"id": "71848515-216f-49df-980c-1dcbfe93146e",
+			"url": "http://scatalapi.herokuapp.com/aluno/7/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Sem resposta (204)",
+			"id": "135a21d2-93a3-4b13-b3ed-2ee49f841804",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Dúvida sem resposta - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Dúvida não encontrada (404)",
+			"id": "b831df9c-20b9-4946-b9a9-b7e7dd40ebdd",
+			"url": "http://scatalapi.herokuapp.com/duvida/99999999/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Dúvida não existe :( - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Respondida com sucesso (201)",
+			"id": "ab704d88-3c00-4dc0-a330-1c467febc152",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Dúvida respondida - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Respondida com sucesso 2 (201)",
+			"id": "002f8918-1bb0-41a2-bb90-3a5dfcee3eae",
+			"url": "http://scatalapi.herokuapp.com/duvida/16/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Dúvida respondida - Código 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Resposta inválida (400)",
+			"id": "6a551442-72cf-4ffd-84c6-ef3e81a13e9e",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta com dados errados - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Não autorizado (401)",
+			"id": "3a26e1bc-cebb-42f4-8087-e1d15b992947",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Resposta da Dúvida - Não encontrado (404)",
+			"id": "765aadfd-cd8d-484a-981c-f20fa6793ecc",
+			"url": "http://scatalapi.herokuapp.com/duvida/999999/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Não existe dúvida com esse id - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Resposta(s) encontrada(s) (200)",
+			"id": "a1e26959-17b9-46e0-adca-66985dc438f6",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta(s) encontrada(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta da Dúvida - Não autorizado (401)",
+			"id": "c1cd6d41-bca5-4fc3-b4a3-494c5320e90a",
+			"url": "http://scatalapi.herokuapp.com/duvida/15/resposta",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta(s) encontrada(s) - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Login - Sucedido (200)",
+			"id": "32aa8e5d-267c-412a-8adb-cd839a31b353",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Logado com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Login - Erro de dados (400)",
+			"id": "ccb6cf78-a7df-4d9a-b007-1bee368ddadd",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {
+				"Dados inválidos - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "POST Login - Erro de dados 2 (400)",
+			"id": "765b8642-a23b-4e1b-a1bb-0a94b03e1bec",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Dados inválidos - Código 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "POST Login - Não autorizado (401)",
+			"id": "b985e824-7b20-438b-a2fb-d014bb8e95ec",
+			"url": "http://scatalapi.herokuapp.com/aluno/login",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Logado com sucesso - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Meus dados - Sucesso (200)",
+			"id": "1ef8c00b-de7b-4c1b-a01a-a2cc27c2590d",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Dados recuperados - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Meus dados - Sem autorização (401)",
+			"id": "a315a9fa-edff-41cf-b107-e641b8cffbac",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização para passar - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Meus dados - Token inválido (400)",
+			"id": "45ac75a9-e5c5-4c77-904c-4d76250addcb",
+			"url": "http://scatalapi.herokuapp.com/aluno/meus-dados",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {
+				"Token errado, sorry meu chapa - Código 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutoria - Tutorias encontradas (200)",
+			"id": "bda5297f-e6e9-43e4-8dc8-96da0dec4040",
+			"url": "http://scatalapi.herokuapp.com/tutoria",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutorias encontradas": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutoria - Sem autorização (401) Copy",
+			"id": "08c9dfd2-ec16-439b-9e1c-1c6327dc4f05",
+			"url": "http://scatalapi.herokuapp.com/tutoria",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutoria - Tutoria encontrada (200)",
+			"id": "d11b7028-672d-4938-8da8-2c48e184b2a3",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutoria - Tutoria não existe (404)",
+			"id": "def89c54-0c1d-4c60-a11e-f2871b31a9d6",
+			"url": "http://scatalapi.herokuapp.com/tutoria/999999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutoria - Sem autorização (401)",
+			"id": "67207872-deec-4dc9-a1f2-0a38720d961d",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Tutoria - Nome atualizado (200)",
+			"id": "6d59aa73-8c61-4a78-b2e5-7a95b670bf8f",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria atualizada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Tutoria - Sem autoridade (401)",
+			"id": "e430a8a3-7f12-41aa-9fa3-0c29d6e5be9d",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Você não pode entrar aí - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Tutoria - Tutoria não existe (404)",
+			"id": "0501acc2-3f6a-4b5b-99b0-00ba1cbbcda7",
+			"url": "http://scatalapi.herokuapp.com/tutoria/999999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Tutoria - Dados errados (400)",
+			"id": "536eec41-5805-41f3-81e1-6fb38f63d8dd",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria atualizada - Código 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "PATCH Tutoria - Volta ao nome original (200)",
+			"id": "feef3d75-0c0c-4570-b01a-d3955bc7935a",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutoria re-atualizada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida em tutoria - Dúvida(s) encontrada(s) (200)",
+			"id": "54fcea13-d43b-4f70-83b1-5495bbd34fba",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida(s) encontrada(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida em tutoria - Sem dúvidas (201)",
+			"id": "fd42c491-55f6-4642-9de2-2f44fccfe447",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Não há dúvidas - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "GET Duvida em tutoria - Sem autorização (401)",
+			"id": "f37c4fed-6c8c-42cd-b178-d39f2cae216b",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida em tutoria -Tutoria inexistente (404)",
+			"id": "568a599e-d38b-4056-8b3b-abbfebc68afe",
+			"url": "http://scatalapi.herokuapp.com/tutoria/99999/duvida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Não existe essa tutoria - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutor da tutoria - Tutor(es) encontrado(s) (200)",
+			"id": "66fd38b9-40b0-4b8a-9dc7-be8c97605da1",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Tutor(es) encontrado(s) - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutor da tutoria - Sem tutor (201)",
+			"id": "b38726a7-6f33-4f2b-9828-9c0842ef18dd",
+			"url": "http://scatalapi.herokuapp.com/tutoria/2/tutor",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem tutores aqui - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "GET Tutor da tutoria - Não pode prosseguir (401)",
+			"id": "5cb77e4e-91f3-40ad-aa93-40d3702b7e1e",
+			"url": "http://scatalapi.herokuapp.com/tutoria/1/tutor",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Tutor da tutoria - Tutoria não existe (404)",
+			"id": "c5fe3b67-fe33-4310-9988-d2aa3f6e17b4",
+			"url": "http://scatalapi.herokuapp.com/tutoria/99999/tutor",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Não há tutoria - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta - Sucesso (200)",
+			"id": "4055eec9-e2e3-42aa-8853-1218436bf815",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta adquirida - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta - Não autorizado (401)",
+			"id": "4e0bad65-dffe-486f-b47f-2384bda48f2f",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Resposta - Resposta inexistente (404)",
+			"id": "8fd56c01-2e2b-4d2f-8153-2d91b415e9d7",
+			"url": "http://scatalapi.herokuapp.com/resposta/9999999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Resposta - Resposta atualizada (200)",
+			"id": "05eadfde-788b-48e4-9561-b5aa77e94685",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta mudada com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Resposta - Sem autorização (401)",
+			"id": "7a2aef93-b6a3-4190-a01c-0615e1f481b5",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Erro de autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Resposta - Resposta inexistente (404)",
+			"id": "a981458f-5110-44d9-bb79-703e568d1d87",
+			"url": "http://scatalapi.herokuapp.com/resposta/999999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Não existe tal resposta - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (401) Copy",
+			"id": "32ee3515-6a6b-4ac6-a383-50f9b5bc0a2f",
+			"url": "http://scatalapi.herokuapp.com/resposta/18",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (201)",
+			"id": "8449e26d-4aa9-41cc-8c80-9c2d1afb2f5d",
+			"url": "http://scatalapi.herokuapp.com/resposta/17",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "DELETE Resposta - Sucesso (404)",
+			"id": "055f0532-b81b-41a1-81ff-4cd9a2fd29ca",
+			"url": "http://scatalapi.herokuapp.com/resposta/9999999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Resposta não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Duvida encontrada (200)",
+			"id": "aa61f1b7-ac79-42d2-acd3-d28cf9d42d06",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Duvida não encontrada (404)",
+			"id": "eadfebea-474d-4627-a2c7-d013ad00e1a9",
+			"url": "http://scatalapi.herokuapp.com/duvida/2000",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida não encontrada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Não autorizado (401)",
+			"id": "13bfd9a2-5d88-4329-9af6-202f7a85dfc8",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Atualiza dúvida (200)",
+			"id": "13cf95d8-446d-478e-b490-13b102da5173",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida atualizada com sucesso - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Sem autorização (401)",
+			"id": "3eec8f90-5a4d-4c7f-9982-46d3fcc987c4",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Sem autorização necessária - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "PATCH Dúvida do aluno - Sem dúvida (404)",
+			"id": "e1037659-23b6-4959-8cc6-411ae949aa59",
+			"url": "http://scatalapi.herokuapp.com/duvida/99999",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"Não existe tal dúvida - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Duvida encontrada por pesquisa (200)",
+			"id": "1e6fb23d-c1ad-4bcc-a366-e8a9d558cf2a",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/vida",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida encontrada - Código 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Duvida não encontrada por pesquisa (204)",
+			"id": "e6ace9e6-fe50-4949-88f7-867cb42715ae",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/monte",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"Duvida não encontrada - Código 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "GET Duvida - Sem autorização (401)",
+			"id": "71b2d7af-9cdc-4b0d-b304-5da5d5a200a6",
+			"url": "http://scatalapi.herokuapp.com/duvida/search/objetivo",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Autorização insulficiente - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "DELETE Duvida - Deletar 1ª dúvida (201)",
+			"id": "faee8d79-b456-4208-8723-dafb2902eb2f",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"1ª dúvida deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "DELETE Duvida - Deletar 2ª dúvida (201)",
+			"id": "a467ce5e-cc29-40c3-bdf9-8e6ce53c03e2",
+			"url": "http://scatalapi.herokuapp.com/duvida/16",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 204,
+				"name": "No Content",
+				"detail": {
+					"name": "No Content",
+					"detail": "The server successfully processed the request, but is not returning any content."
+				}
+			},
+			"testPassFailCounts": {
+				"2ª Dúvida deletada - Código 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			}
+		},
+		{
+			"name": "DELETE Duvida - Não autorizado (401)",
+			"id": "db4a8796-1266-410e-9edf-d1c670d8cc04",
+			"url": "http://scatalapi.herokuapp.com/duvida/15",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized",
+				"detail": {
+					"name": "Unauthorized",
+					"detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
+				}
+			},
+			"testPassFailCounts": {
+				"Não autorizado - Código 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "DELETE Duvida - Dúvida não encontrada (404)",
+			"id": "4c2dbdd4-0bcb-4af5-a170-ebc3734facab",
+			"url": "http://scatalapi.herokuapp.com/duvida/2000",
+			"time": "2019-11-22T22:38:25.767Z",
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found",
+				"detail": {
+					"name": "Not Found",
+					"detail": "The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
+				}
+			},
+			"testPassFailCounts": {
+				"1ª dúvida deletada - Código 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		}
+	],
+	"synced": false
+}
